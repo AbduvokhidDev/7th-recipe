@@ -7,14 +7,14 @@ async function seed() {
     email: "ali@example.com",
   };
   const recipe = {
-    id: "1",
+    id: 1,
     title: "osh",
     ingredients: "guruch,sabzi",
     steps: "togresz,qovuras,suvquyas,pishad",
     userId: data.id,
   };
   const cookLog = {
-    id: "1",
+    id: 1,
     recipeId: recipe.id,
     userId: data.id,
   };

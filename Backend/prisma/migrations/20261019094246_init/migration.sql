@@ -4,7 +4,6 @@ CREATE TABLE "User" (
     "name" TEXT,
     "email" TEXT,
     "avatar" TEXT,
-    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -15,7 +14,7 @@ CREATE TABLE "Recipe" (
     "title" TEXT NOT NULL,
     "ingredients" TEXT NOT NULL,
     "steps" TEXT NOT NULL,
-    "imageUrl" TEXT NOT NULL,
+    "imageUrl" TEXT,
     "prepTime" INTEGER,
     "userId" TEXT NOT NULL,
     "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -28,7 +27,7 @@ CREATE TABLE "CookLog" (
     "id" SERIAL NOT NULL,
     "recipeId" INTEGER NOT NULL,
     "userId" TEXT NOT NULL,
-    "cookedAt" TIMESTAMP(3) NOT NULL,
+    "cookedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "rating" INTEGER,
     "note" TEXT,
     "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -40,7 +39,7 @@ CREATE TABLE "CookLog" (
 CREATE INDEX "Recipe_userId_idx" ON "Recipe"("userId");
 
 -- AddForeignKey
-ALTER TABLE "Recipe" ADD CONSTRAINT "Recipe_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Recipe" ADD CONSTRAINT "Recipe_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "CookLog" ADD CONSTRAINT "CookLog_recipeId_fkey" FOREIGN KEY ("recipeId") REFERENCES "Recipe"("id") ON DELETE CASCADE ON UPDATE CASCADE;
