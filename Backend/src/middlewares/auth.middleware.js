@@ -1,0 +1,11 @@
+const { getAuth } = require("@clerk/express");
+const { success } = require("zod");
+const requireAuth = (req, res, next) => {
+  const { userId } = getAuth(req);
+  if (!userId) {
+    return res.status(401).json({ success: false, error: "Unauthorized'" });
+  }
+  req.userId = userId;
+  next();
+};
+module.exports = { requireAuth };

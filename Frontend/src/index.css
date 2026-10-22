@@ -2,8 +2,8 @@
 @plugin "daisyui";
 @plugin "daisyui/theme" {
   name: "valentine";
-  default: false;
-  prefersdark: false;
+  default: true;
+  prefersdark: true;
   color-scheme: "light";
   --color-base-100: oklch(97% 0.014 343.198);
   --color-base-200: oklch(94% 0.028 342.258);
