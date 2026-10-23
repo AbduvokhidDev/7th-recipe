@@ -22,7 +22,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(clerkMiddleware());
 
+
 const recipeRoutes = require("./routes/recipe.routes");
+const { notFount, errorHandler } = require("./middlewares/errorHandler");
 
 app.get("/whoami", (req, res) => {
   const { userId, sessionId, sessionClaims } = getAuth(req);
@@ -43,12 +45,7 @@ app.get("/health", (req, res) => {
   });
 });
 app.use("/recipes", recipeRoutes);
-app.use((err, req, res, next) => {
-  console.error(err);
-  if (err.name === "ZodError") {
-    return res.status(400).json({ success: false, error: err.issues });
-  }
-  res.status(err.status || 500).json({ success: false, error: err.message });
-});
+app.use(notFount)
+app.use((err, req, res, next) => errorHandler(err, req, res, next))
 
 module.exports = app;
