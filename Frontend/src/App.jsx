@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router";
 import Layout from "./components/layout/Layout";
 import LoadingState from "./components/utils/LoadingState";
 import ProtectedRoute from "./components/utils/ProtectedRoute";
+import CreateRecipe from "./pages/CreateRecipe";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
@@ -33,6 +34,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/recipes" element={<Recipes />} />
         <Route path="/recipes/:id" element={<RecipeDetail />} />
+        <Route path="/recipes/new" element={<CreateRecipe />} />
+
         <Route
           path="/dashboard"
           element={
@@ -41,6 +44,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/profile"
           element={
@@ -49,6 +53,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+
         <Route path="/sign-in" element={<Navigate to="/" replace />} />
         <Route path="*" element={<NotFound />} />
       </Route>

@@ -20,14 +20,32 @@ function Navbar() {
       <NavLink to="/" end className={linkStyle} onClick={closeMenu}>
         Bosh sahifa
       </NavLink>
+
       <NavLink to="/recipes" className={linkStyle} onClick={closeMenu}>
         Retseptlar
       </NavLink>
+
       {isSignedIn && (
         <>
+          <NavLink
+            to="/recipes/new"
+            className={({ isActive }) =>
+              `flex items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-bold transition-all duration-300 ${
+                isActive
+                  ? "bg-pink-600 text-white shadow-md shadow-pink-200"
+                  : "bg-gradient-to-r from-pink-500 to-rose-400 text-white shadow-sm shadow-pink-200 hover:-translate-y-0.5 hover:from-pink-600 hover:to-rose-500 hover:shadow-md"
+              }`
+            }
+            onClick={closeMenu}
+          >
+            <span className="text-lg leading-none">＋</span>
+            Retsept qo‘shish
+          </NavLink>
+
           <NavLink to="/dashboard" className={linkStyle} onClick={closeMenu}>
             Boshqaruv
           </NavLink>
+
           <NavLink to="/profile" className={linkStyle} onClick={closeMenu}>
             Profil
           </NavLink>
@@ -47,6 +65,7 @@ function Navbar() {
           <span className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-pink-400 to-rose-300 text-xl shadow-md shadow-pink-200/60 transition-transform duration-300 group-hover:rotate-[-8deg] group-hover:scale-110 sm:size-11 sm:text-2xl">
             🧁
           </span>
+
           <span className="truncate font-serif text-lg font-bold tracking-wide text-pink-600 sm:text-2xl">
             Shirinliklar
           </span>
@@ -56,6 +75,7 @@ function Navbar() {
           <>
             <div className="hidden items-center gap-1.5 md:flex lg:gap-2">
               {navLinks}
+
               {!isSignedIn && (
                 <Link
                   to="/sign-in"
@@ -64,6 +84,7 @@ function Navbar() {
                   Kirish
                 </Link>
               )}
+
               {isSignedIn && (
                 <div className="ml-1 rounded-full border border-pink-100 bg-pink-50 p-1">
                   <UserButton />
