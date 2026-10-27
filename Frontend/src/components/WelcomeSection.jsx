@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import VideoModal from "./VideoModal";
 
 function WelcomeSection() {
   return (
@@ -38,6 +39,8 @@ function WelcomeSection() {
                 Retseptlarni ko‘rish
                 <span aria-hidden="true">→</span>
               </Link>
+
+              <VideoModal src="/VideoModal.mp4" />
 
               <span className="text-center text-sm font-medium text-[#987c88] min-[480px]:text-left">
                 ♡ Mehr bilan tayyorlangan
